@@ -26,6 +26,7 @@ x <- readRDS("ASV_Table.rds")
 y <- readRDS("metadata.rds") %>% as.data.frame()
 tax <- readRDS("Tax_table.rds") %>% as.data.frame()
 seed_no <- 555
+file_head <- "my_file_head"
 
 #ALDEx2 function ==========================
 ALv <- function(x,y,tax,seed_no,file_head){
@@ -64,5 +65,5 @@ ALv <- function(x,y,tax,seed_no,file_head){
   }
 }
 
-ALv(x,y,tax,seed_no)
+ALv(x,y,tax,seed_no, file_head)
 
