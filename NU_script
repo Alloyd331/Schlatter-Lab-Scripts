@@ -1,0 +1,11 @@
+#converting character to numerical
+NU <- function(data) {
+  out <- matrix(ncol = ncol(data), nrow = nrow(data)) 
+  for (i in 1:ncol(data)) {
+    out <- as.data.frame(out)
+    out[ , i] <- as.numeric(data[ , i])
+    colnames(out) <- colnames(data)
+    rownames(out) <- rownames(data)
+  }
+  return(out)
+}
