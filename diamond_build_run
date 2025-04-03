@@ -1,0 +1,19 @@
+#!/bin/bash -l        
+#SBATCH --time=5:00:00
+#SBATCH --ntasks=6
+#SBATCH --mem=100g
+#SBATCH --tmp=100g
+#SBATCH --mail-type=BEGIN,END,FAIL  
+#SBATCH --mail-user=lloyd331@umn.edu 
+
+#Building diamond database where the input is a protein database and the output
+#is a diamond database. In this instance, I used the protein Arabidopsis 
+#proteome downloaded via NCBI Genbank. Insert the proteome/protein database 
+#which best suits your purposes behind the "--in" prompt. 
+diamond makedb --in uniprotkb_proteome_UP000006548_AND_revi_2025_03_30.fasta -d Trinity_reference
+
+#Running diamond. Here, the -d input Trinity_reference.dmnd" is the output of 
+#of the previous step. The -q input is the transcriptome which you are looking
+#to annotate, and finally, the output is protein annotations in the form of a 
+#tab-separated text file. 
+diamond blastx -d Trinity_reference.dmnd -q trinity_out_dir/Trinity.fasta -o AT_matches.tsv
