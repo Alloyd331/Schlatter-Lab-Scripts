@@ -1,0 +1,17 @@
+#the Diamond program is not available as a module in MSI; it has to be installed and set up 
+#in MSI. 
+
+#downloading the program by default this command will bring the file into your home directory
+wget http://github.com/bbuchfink/diamond/releases/download/v2.1.11/diamond-linux64.tar.gz
+
+#installing the program
+tar xzf diamond-linux64.tar.gz
+
+#Together these commands will instsall the program in your home directory, from which you 
+#can then move it into any directory (such as the group directory, or into your local bin directory).
+#However, when you go to run the program, you will need to add the directory into which you installed 
+#the file into your $PATH ($PATH being the list of directories through which the shell script will 
+#search for programs in response to commands).
+#This can be accomplished through the following command:
+export PATH="/insert/directory/here:$PATH"
+
